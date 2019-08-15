@@ -16,7 +16,10 @@
  
  
  # Test Cases
- # 1. GET api/Products 
+ # 1. GET api/Products/{productId}
+ <https://localhost:44317/api/Products>
+ 
+ 
   [
     {
       "Id": 1,
