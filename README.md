@@ -109,4 +109,5 @@ url: <https://localhost:44317/api/ProductRatings>
 [Response]
 
 If updated: 204 No Content
+
 If new record inserted: 201 Created
