@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace Rating.Controllers
+﻿namespace Rating.Controllers
 {
+    using System.Web.Mvc;
+
+    /// <summary>
+    /// Defines the <see cref="HomeController" />
+    /// </summary>
     public class HomeController : Controller
     {
+        /// <summary>
+        /// The Index
+        /// </summary>
+        /// <returns>The <see cref="ActionResult"/></returns>
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
