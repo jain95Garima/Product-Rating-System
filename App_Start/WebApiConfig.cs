@@ -49,6 +49,30 @@ namespace Rating
             );
 
             config.Routes.MapHttpRoute(
+               name: "PutProductRating",
+               routeTemplate: "api/ProductRating/{productId}/{userId}",
+               defaults: new
+               {
+                   controller = "ProductRatings",
+                   action = "PutProductRating",
+                   productId = RouteParameter.Optional,
+                   userId = RouteParameter.Optional,
+               }
+            );
+
+            config.Routes.MapHttpRoute(
+               name: "PostProductRating",
+               routeTemplate: "api/ProductRating/",
+               defaults: new
+               {
+                   controller = "ProductRatings",
+                   action = "PostProductRating",
+                   productId = RouteParameter.Optional,
+                   userId = RouteParameter.Optional,
+               }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

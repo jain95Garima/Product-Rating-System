@@ -71,7 +71,9 @@ namespace Rating.Controllers
             return Ok(average);
         }
 
-        // PUT: api/ProductRatings/5
+        // PUT: api/ProductRating/5/2
+        [HttpPut]
+        [ActionName("PutProductRating")]
         [ResponseType(typeof(void))] 
         public IHttpActionResult PutProductRating(int productId, int userId, ProductRating productRating)
         {
@@ -108,9 +110,18 @@ namespace Rating.Controllers
         }
 
         // POST: api/ProductRatings
+        [HttpPost]
+        [ActionName("PostProductRating")]
         [ResponseType(typeof(ProductRating))]
         public IHttpActionResult PostProductRating(ProductRating productRating)
         {
+           IQueryable<ProductRating> ifIdExists = db.ProductRatings.AsNoTracking().Where(x => x.ProductId == productRating.ProductId && x.UserId == productRating.UserId);
+
+            if (ifIdExists.Count() != 0 )
+            {
+                productRating.RatingId = ifIdExists.FirstOrDefault().RatingId;
+                return  PutProductRating(productRating.ProductId, productRating.UserId, productRating);
+            }
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
